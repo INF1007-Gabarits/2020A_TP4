@@ -88,18 +88,7 @@ jobs:
             --token=${{ secrets.REPO_WORKFLOW_PAT }} \
             --org_name="$org_name" \
             --repo_filter="$repo_filter" \
-            --branch="master"
-          python3 -m classroom_tools.student_repositories.delete_workflows \
-            --token=${{ secrets.REPO_WORKFLOW_PAT }} \
-            --org_name="$org_name" \
-            --repo_filter="$repo_filter" \
             --branch="remise"
-          python3 -m classroom_tools.student_repositories.sync_with_template_repository \
-            --template_repo_fullname="$GITHUB_REPOSITORY" \
-            --token="${{ secrets.REPO_WORKFLOW_PAT }}" \
-            --org_name="$org_name" \
-            --repo_filter="$repo_filter" \
-            --branch="master"
           python3 -m classroom_tools.student_repositories.sync_with_template_repository \
             --template_repo_fullname="$GITHUB_REPOSITORY" \
             --token="${{ secrets.REPO_WORKFLOW_PAT }}" \
