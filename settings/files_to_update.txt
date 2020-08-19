@@ -1,5 +1,4 @@
 .github/workflows/assignment_grading.yml
-environment.yml
 README.md
 test_assignment.py
 settings/files_to_update.txt
