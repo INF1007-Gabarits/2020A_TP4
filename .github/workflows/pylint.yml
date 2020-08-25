@@ -15,7 +15,7 @@ jobs:
         run: |
           python3 -m pip install -q setuptools
           python3 -m pip install -q pylint
-          mkdir pylint_reports
+          mkdir -p pylint_reports
           for path in $(ls -R)
           do
             if [[ "$path" =~ .*\.py ]]
