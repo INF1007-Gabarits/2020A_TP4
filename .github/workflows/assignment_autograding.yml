@@ -98,8 +98,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Trigger workflows
         run: |
+          source settings/variables.txt
+
           python3 -m pip install -q setuptools
-          python3 -m pip install -q git+"${{ secrets.CLASSROOM_TOOLS_URL }}"
+          python3 -m pip install -q git+${{ secrets.CLASSROOM_TOOLS_URL }}
+
           python3 -m classroom_tools.student_repositories.trigger_workflows \
             --token=${{ secrets.REPO_WORKFLOW_PAT }} \
             --org_name="$org_name" \
