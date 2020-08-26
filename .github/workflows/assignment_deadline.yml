@@ -63,6 +63,9 @@ jobs:
           --branch_name="remise"
 
         pull_request_body="La correction du TP est effectuer avec un Pull Request Review. "
+        pull_request_body="La branch master contient les commits effectués avant et après la date de remise. "
+        pull_request_body="La branch remise contient les commits effectués uniquement avant la date de remise. "
+        pull_request_body="La branch correction contient uniquement le premier commit et est utilisée comme branch de base pour le Pull Request. "
         pull_request_body+="Lisez les commentaires des correcteurs/trices. "
         pull_request_body+="Pour plus d'information consulter: "
         pull_request_body+="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request"
