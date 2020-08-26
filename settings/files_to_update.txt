@@ -1,4 +1,5 @@
-.github/workflows/assignment_grading.yml
+.github/workflows/assignment_tests.yml
+.github/workflows/pylint.yml
 README.md
 test_assignment.py
 settings/files_to_update.txt
