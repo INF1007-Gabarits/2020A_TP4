@@ -74,9 +74,9 @@ jobs:
       - name: Verify test_file from settings/variables.txt
         run: |
           source settings/variables.txt
-          if [[ ! -f "$test_file" ]]
+          if [[ ! -f "$grading_tests_file" ]]
           then
-            printf "File not found: $test_file\n"
+            printf "File not found: $grading_tests_file\n"
             exit 1
           fi
       - uses: actions/checkout@v2
@@ -101,5 +101,5 @@ jobs:
           python3 -m pip install -q git+"${{ secrets.CLASSROOM_TOOLS_URL }}"
 
           python3 -m classroom_tools.verifications.grading_tests \
-            --test_file_path="$test_file" \
+            --test_file_path="$grading_tests_file" \
             --test_associations_path="$test_associations_path"
