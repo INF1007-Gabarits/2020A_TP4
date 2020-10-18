@@ -99,7 +99,8 @@ jobs:
 
           python3 -m pip install -q setuptools
           python3 -m pip install -q git+"${{ secrets.CLASSROOM_TOOLS_URL }}"
-
+          python3 -m pip install -q -r requirements.txt
+          
           python3 -m classroom_tools.verifications.grading_tests \
             --test_file_path="$grading_tests_file" \
             --test_associations_path="$test_associations_path"
