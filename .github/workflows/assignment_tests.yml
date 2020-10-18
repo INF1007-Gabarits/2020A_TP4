@@ -17,6 +17,7 @@ jobs:
 
           python3 -m pip install -q setuptools
           python3 -m pip install -q git+${{ secrets.CLASSROOM_TOOLS_URL }}
+          python3 -m pip install -q -r requirements.txt
 
           function run_tests() {
             python3 "$grading_tests_file"
