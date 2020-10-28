@@ -1,53 +1,40 @@
-# logic.py to be  
-# imported in the 2048.py file 
+# logique.py est importé par gui.py
+# Ce fichier consiste en la logique du jeu 2048 
+
+import random
+import constantes as c
+
+# TODO: 
+# Initialisation du jeu
+# 1. Dans une nouvelle matrice, ajouter deux fois un 2 ou un 4
+def demarrer_jeu(): 
+    mat = initialiser_nouvelle_matrice()
   
-# importing random package 
-# for methods to generate random 
-# numbers. 
-import random 
-  
-# function to initialize game / grid 
-# at the start 
-def start_game(): 
-  
-    # declaring an empty list then 
-    # appending 4 list each with four 
-    # elements as 0. 
-    mat =[] 
-    for i in range(4): 
-        mat.append([0] * 4) 
-  
-    # printing controls for user 
-    print("Commands are as follows : ") 
-    print("'W' : Move Up") 
-    print("'S' : Move Down") 
-    print("'A' : Move Left") 
-    print("'D' : Move Right") 
-  
-    # calling the function to add 
-    # a new number in grid 
-    for i in range(2):
-        add_new_2_or_4(mat)
-    
+    for _ in range(2):
+        ajouter_nouveau_2_ou_4(mat)
+
     return mat 
+
+#TODO:
+# Retourner une nouvelle matrice 4x4 remplie de 0
+def initialiser_nouvelle_matrice():
+    mat =[] 
+    for _ in range(4): 
+        mat.append([0] * 4) 
+    
+    return mat
+
+# TODO:
+# Ajout d'un 2 ou d'un 4 a la matrice du jeu avec des probabilités de: 90% 2 et 10% 4
+# dans un emplacement vide aléatoire de la matrice (emplacement == 0)
+def ajouter_nouveau_2_ou_4(mat): 
   
-# function to add a new 2 or 4 in 
-# grid at any random empty cell 
-def add_new_2_or_4(mat): 
-  
-   # choosing a random index for 
-   # row and column. 
     r = random.randint(0, 3) 
     c = random.randint(0, 3) 
   
-    # while loop will break as the 
-    # random cell chosen will be empty 
-    # (or contains zero) 
     while(mat[r][c] != 0): 
         r = random.randint(0, 3) 
         c = random.randint(0, 3) 
-  
-    # On place un 2 90% du temps et un 4 10% du temps.
     
     if random.randint(0, 10) == 0:
         mat[r][c] = 4
@@ -56,207 +43,178 @@ def add_new_2_or_4(mat):
 
     return mat
   
-# function to get the current 
-# state of game 
-def get_current_state(mat): 
+# TODO: 
+# Retourner l'état du jeu
+# 1. Victoire
+#   a) Si un element de la matrice == 2048
+# 2. Le jeu n'est pas fini
+#   a) S'il y a au moins un element == 0
+#   b) OU S'il n'y a aucune cellule vide, MAIS qu'il y a un (ou des) mouvements possibles
+# 3. Défaite
+#   a) Les cas restants
+def get_etat_jeu_courant(mat): 
   
-    # if any cell contains 
-    # 2048 we have won 
     for i in range(4): 
         for j in range(4): 
             if(mat[i][j]== 2048): 
-                return 'WON'
+                return c.ETAT_VICTOIRE
   
-    # if we are still left with 
-    # atleast one empty cell 
-    # game is not yet over 
     for i in range(4): 
         for j in range(4): 
             if(mat[i][j]== 0): 
-                return 'GAME NOT OVER'
+                return c.ETAT_PARTIE_EN_COURS
   
-    # or if no cell is empty now 
-    # but if after any move left, right, 
-    # up or down, if any two cells 
-    # gets merged and create an empty 
-    # cell then also game is not yet over 
     for i in range(3): 
         for j in range(3): 
             if(mat[i][j]== mat[i + 1][j] or mat[i][j]== mat[i][j + 1]): 
-                return 'GAME NOT OVER'
-  
-    for j in range(3): 
-        if(mat[3][j]== mat[3][j + 1]): 
-            return 'GAME NOT OVER'
+                return c.ETAT_PARTIE_EN_COURS
   
     for i in range(3): 
-        if(mat[i][3]== mat[i + 1][3]): 
-            return 'GAME NOT OVER'
+        if(mat[3][i]== mat[3][i + 1]) or (mat[i][3]== mat[i + 1][3]): 
+            return c.ETAT_PARTIE_EN_COURS
   
-    # else we have lost the game 
-    return 'LOST'
+    return c.ETAT_DEFAITE
   
-# all the functions defined below 
-# are for left swap initially. 
+# NOTE: Les fonctions suivantes sont pour le mouvement gauche seulement 
   
-# function to compress the grid 
-# after every step before and 
-# after merging cells. 
-def compress(mat): 
+# TODO: 
+# Comprimer la matrice de jeu.
+# À effectuer après tous les étapes avant et après le fusionnement des éléments
+#   a) Initialiser une nouvelle matrice remplie de 0 initialement.
+#   b) Bouger tous les elements à son extrême gauche, lorsque possible
+#       b.a) SEULEMENT possible lorsque l'élément à gauche == 0
+#       b.b) PAS POSSIBLE si gauche != 0
+#   c) Retourner la nouvelle matrice comprimée, avec un booléen indicant s'il y a au moins eu 1 changement
+def comprimer(mat): 
   
-    # bool variable to determine 
-    # any change happened or not 
-    changed = False
-  
-    # empty grid  
-    new_mat = [] 
-  
-    # with all cells empty 
+    a_au_moins_un_changement = False  
+    nouvelle_matrice = initialiser_nouvelle_matrice()
+
     for i in range(4): 
-        new_mat.append([0] * 4) 
-          
-    # here we will shift entries 
-    # of each cell to it's extreme 
-    # left row by row 
-    # loop to traverse rows 
-    for i in range(4): 
-        pos = 0
+        derniere_position = 0
   
-        # loop to traverse each column 
-        # in respective row 
         for j in range(4): 
             if(mat[i][j] != 0): 
+                nouvelle_matrice[i][derniere_position] = mat[i][j] 
                   
-                # if cell is non empty then 
-                # we will shift it's number to 
-                # previous empty cell in that row 
-                # denoted by pos variable 
-                new_mat[i][pos] = mat[i][j] 
-                  
-                if(j != pos): 
-                    changed = True
-                pos += 1
+                if(j != derniere_position): 
+                    a_au_moins_un_changement = True
+                
+                derniere_position += 1
   
-    # returning new compressed matrix 
-    # and the flag variable. 
-    return new_mat, changed 
+    return nouvelle_matrice, a_au_moins_un_changement 
   
-# function to merge the cells 
-# in matrix after compressing 
-def merge(mat): 
-      
-    changed = False
+# TODO:
+# Fusionner les éléments de la matrice après une compression
+# 1) Si l'élément a la même valeur que le prochain élément dans la ligne
+#    ET qu'ils sont non vide (!= 0)
+#    ALORS doubler la valeur de l'élément courant ET vider l'élément suivant
+# 2) Retourner la matrice fusionnée et un booléen indicant s'il y a eu un changement
+def fusionner(mat): 
+    a_au_moins_un_changement = False
       
     for i in range(4): 
         for j in range(3): 
-  
-            # if current cell has same value as 
-            # next cell in the row and they 
-            # are non empty then 
             if(mat[i][j] == mat[i][j + 1] and mat[i][j] != 0): 
   
-                # double current cell value and 
-                # empty the next cell 
                 mat[i][j] = mat[i][j] * 2
                 mat[i][j + 1] = 0
   
-                # make bool variable True indicating 
-                # the new grid after merging is 
-                # different. 
-                changed = True
+                a_au_moins_un_changement = True
   
-    return mat, changed 
-  
-# function to reverse the matrix 
-# maens reversing the content of 
-# each row (reversing the sequence) 
-def reverse(mat): 
-    new_mat =[] 
+    return mat, a_au_moins_un_changement 
+
+# TODO: 
+# Inverser la matrice
+# 1) Dans une nouvelle matrice,
+#    inverser la séquence dans chaque ligne de la matrice
+# 2) Retourner la nouvelle matrice
+def inverser(mat): 
+    nouvelle_matrice =[] 
     for i in range(4): 
-        new_mat.append([]) 
+        nouvelle_matrice.append([]) 
         for j in range(4): 
-            new_mat[i].append(mat[i][3 - j]) 
-    return new_mat 
+            nouvelle_matrice[i].append(mat[i][3 - j]) 
+    return nouvelle_matrice 
   
-# function to get the transpose 
-# of matrix means inerchanging 
-# rows and column 
-def transpose(mat): 
-    new_mat = [] 
+# TODO:
+# Transposer la matrice
+# 1) Dans une nouvelle matrice,
+#    Échanger les lignes avec les colomnes
+# 2) Retourner la nouvelle matrice
+def transposer(mat): 
+    nouvelle_matrice = [] 
     for i in range(4): 
-        new_mat.append([]) 
+        nouvelle_matrice.append([]) 
         for j in range(4): 
-            new_mat[i].append(mat[j][i]) 
-    return new_mat 
+            nouvelle_matrice[i].append(mat[j][i]) 
+    return nouvelle_matrice 
   
-# function to update the matrix 
-# if we move / swipe left 
-def move_left(grid): 
-  
-    # first compress the grid 
-    new_grid, changed1 = compress(grid) 
-  
-    # then merge the cells. 
-    new_grid, changed2 = merge(new_grid) 
+
+# NOTE: Les fonctions suivantes servent à gérer un mouvement dans la matrice.
+
+#TODO: 
+# Bouger la matrice à gauche
+# 1) Dans une nouvelle matrice
+#   a) Comprimer la matrice
+#   b) Fusionner la matrice
+#   c) Recomprimer la matrice
+# 2) Retourner la nouvelle matrice, ainsi qu'un booléen indicant s'il y a eu un changement
+def bouger_matrice_a_gauche(matrice): 
+    nouvelle_matrice, changement1 = comprimer(matrice) 
+
+    nouvelle_matrice, changement2 = fusionner(nouvelle_matrice) 
       
-    changed = changed1 or changed2 
+    a_au_moins_un_changement = changement1 or changement2 
+   
+    nouvelle_matrice, _ = comprimer(nouvelle_matrice) 
   
-    # again compress after merging. 
-    new_grid, temp = compress(new_grid) 
+    return nouvelle_matrice, a_au_moins_un_changement 
   
-    # return new matrix and bool changed 
-    # telling whether the grid is same 
-    # or different 
-    return new_grid, changed 
+#TODO: 
+# Bouger la matrice à droite
+# 1) Dans une nouvelle matrice
+#   a) Inverser la matrice pour simuler un mouvement à gauche
+#   b) Bouger la matrice à gauche
+#   c) Re-inverser la matrice
+# 2) Retourner la nouvelle matrice, ainsi qu'un booléen indicant s'il y a eu un changement
+def bouger_matrice_a_droite(matrice): 
+    nouvelle_matrice = inverser(matrice) 
   
-# function to update the matrix 
-# if we move / swipe right 
-def move_right(grid): 
+    nouvelle_matrice, a_au_moins_un_changement = bouger_matrice_a_gauche(nouvelle_matrice) 
   
-    # to move right we just reverse 
-    # the matrix  
-    new_grid = reverse(grid) 
+    nouvelle_matrice = inverser(nouvelle_matrice)
+
+    return nouvelle_matrice, a_au_moins_un_changement 
   
-    # then move left 
-    new_grid, changed = move_left(new_grid) 
+#TODO: 
+# Bouger la matrice en haut
+# 1) Dans une nouvelle matrice
+#   a) Transposer la matrice pour simuler un mouvement à gauche
+#   b) Bouger la matrice à gauche
+#   c) Re-transposer la matrice
+# 2) Retourner la nouvelle matrice, ainsi qu'un booléen indicant s'il y a eu un changement
+def bouger_matrice_en_haut(matrice): 
+    nouvelle_matrice = transposer(matrice) 
   
-    # then again reverse matrix will 
-    # give us desired result 
-    new_grid = reverse(new_grid) 
-    return new_grid, changed 
+    nouvelle_matrice, a_au_moins_un_changement = bouger_matrice_a_gauche(nouvelle_matrice) 
+   
+    nouvelle_matrice = transposer(nouvelle_matrice)
+
+    return nouvelle_matrice, a_au_moins_un_changement 
   
-# function to update the matrix 
-# if we move / swipe up 
-def move_up(grid): 
+#TODO: 
+# Bouger la matrice en bas
+# 1) Dans une nouvelle matrice
+#   a) Transposer la matrice pour simuler un mouvement à droite
+#   b) Bouger la matrice à droite
+#   c) Re-transposer la matrice
+# 2) Retourner la nouvelle matrice, ainsi qu'un booléen indicant s'il y a eu un changement
+def bouger_la_matrice_en_bas(matrice): 
+    nouvelle_matrice = transposer(matrice) 
   
-    # to move up we just take 
-    # transpose of matrix 
-    new_grid = transpose(grid) 
+    nouvelle_matrice, a_au_moins_un_changement = bouger_matrice_a_droite(nouvelle_matrice) 
   
-    # then move left (calling all 
-    # included functions) then 
-    new_grid, changed = move_left(new_grid) 
-  
-    # again take transpose will give 
-    # desired results 
-    new_grid = transpose(new_grid) 
-    return new_grid, changed 
-  
-# function to update the matrix 
-# if we move / swipe down 
-def move_down(grid): 
-  
-    # to move down we take transpose 
-    new_grid = transpose(grid) 
-  
-    # move right and then again 
-    new_grid, changed = move_right(new_grid) 
-  
-    # take transpose will give desired 
-    # results. 
-    new_grid = transpose(new_grid) 
-    return new_grid, changed 
-  
-# this file only contains all the logic 
-# functions to be called in main function 
-# present in the other file 
+    nouvelle_matrice = transposer(nouvelle_matrice) 
+
+    return nouvelle_matrice, a_au_moins_un_changement 
