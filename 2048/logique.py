@@ -56,7 +56,7 @@ def get_etat_jeu_courant(mat):
   
     for i in range(4): 
         for j in range(4): 
-            if(mat[i][j]== 2048): 
+            if(mat[i][j]== int(c.TITRE)): 
                 return c.ETAT_VICTOIRE
   
     for i in range(4): 
