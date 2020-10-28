@@ -1,8 +1,8 @@
 import random
 from tkinter import Frame, Label, CENTER
 
-import logic
-import constants as c
+import logique
+import constantes as c
 
 
 class GameGrid(Frame):
@@ -14,8 +14,8 @@ class GameGrid(Frame):
         self.master.bind("<Key>", self.key_down)
 
         # self.gamelogic = gamelogic
-        self.commands = {c.KEY_UP: logic.move_up, c.KEY_DOWN: logic.move_down,
-                         c.KEY_LEFT: logic.move_left, c.KEY_RIGHT: logic.move_right}
+        self.commands = {c.KEY_UP: logique.move_up, c.KEY_DOWN: logique.move_down,
+                         c.KEY_LEFT: logique.move_left, c.KEY_RIGHT: logique.move_right}
         
         self.grid_cells = []
         self.init_grid()
@@ -46,7 +46,7 @@ class GameGrid(Frame):
             self.grid_cells.append(grid_row)
 
     def init_matrix(self):
-        self.matrix = logic.start_game()
+        self.matrix = logique.start_game()
 
     def update_grid_cells(self):
         for i in range(c.GRID_LEN):
@@ -66,11 +66,11 @@ class GameGrid(Frame):
         if key in self.commands:
             self.matrix, done = self.commands[repr(event.char)](self.matrix)
             if done:
-                self.matrix = logic.add_new_2_or_4(self.matrix)
+                self.matrix = logique.add_new_2_or_4(self.matrix)
                 self.update_grid_cells()
                 done = False
 
-                status = logic.get_current_state(self.matrix)
+                status = logique.get_current_state(self.matrix)
                 if status == 'WON': 
                     self.grid_cells[1][1].configure(
                         text="You", bg=c.BACKGROUND_COLOR_CELL_EMPTY)

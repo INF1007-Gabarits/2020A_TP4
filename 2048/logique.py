@@ -26,7 +26,9 @@ def start_game():
   
     # calling the function to add 
     # a new number in grid 
-    add_new_2_or_4(mat) 
+    for i in range(2):
+        add_new_2_or_4(mat)
+    
     return mat 
   
 # function to add a new 2 or 4 in 
