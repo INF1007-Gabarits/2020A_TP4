@@ -13,6 +13,7 @@
 Ce 4e TP s'orchestre autour du [jeu 2048](https://fr.wikipedia.org/wiki/2048_(jeu_vid%C3%A9o), devenu très populaire lors de sa sortie en 2014. Si vous avez besoin d'un petit rafraîchissement mémoire ou si vous ne connaissez pas dutout le jeu, suivez le lien wikipédia.
 
 L'objectif est donc de "combiner" successivement des tuiles occupées par les mêmes puissances de 2 afin d'obtenir le nombre **2048** et gagner la partie. À chaque tour de jeu, on déplace l'ensemble des tuiles dans une des 4 directions de base (haut, bas, gauche, droite) et une nouvelle tuile **2** apparaît à un emplacement non-occupé aléatoire.  
+
 ![grille_2048](https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/2048_Monotonicity.png/270px-2048_Monotonicity.png)
 > Grille du jeu en cours de partie
 
