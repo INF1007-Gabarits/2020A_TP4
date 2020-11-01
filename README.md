@@ -142,4 +142,4 @@ if __name__ == '__main__':
 
 Votre code doit tester les cas (valeurs d'entrées et d'exécutions) **limites** des fonctions afin de repérer d'éventuelles erreurs de logique. Il vous est demandé de rédiger un petit rapport en Markdown (créez un fichier rapport_tests.md dans le dépôt git) où vos expliquerez vos choix en termes de tests et valeurs limites. Discutez de votre stratégie de tests et du choix des valeurs testées)
 
-**N'oubliez** pas d'ajouter (git add) le fichier dans le *tracking* Git. Sinon il ne sera pas ajouté sur GitHub.
+**N'oubliez pas d'ajouter (git add) le fichier dans le *tracking* Git. Sinon il ne sera pas ajouté sur GitHub.**
