@@ -10,7 +10,7 @@
 - Indications de type (*Type hints*)
 - Aucun ajout de librairie supplémentaires qui altéreraient l'esprit du TP. Cet exercice travaille beaucoup avec les matrices. S'il est vrai que du code très efficace pour gérer les opérations matricielles a déjà été écrit par d'autres (librairie *numpy* par exemple), l'intérêt ici est que vous développiez une compréhension du code, pas simplement d'appeler des fonctions haut niveau qui font tout le travail pour vous.. Par exemple la fonction transposer() doit être implémentée directement, l'utilisation du numpy.T est triviale et ne demande par vraiment de compréhension de votre part.
 ## Mise en contexte
-Ce 4e TP s'orchestre autour du [jeu 2048](https://fr.wikipedia.org/wiki/2048_(jeu_vid%C3%A9o), devenu très populaire lors de sa sortie en 2014. Si vous avez besoin d'un petit rafraîchissement mémoire ou si vous ne connaissez pas dutout le jeu, suivez le lien wikipédia.
+Ce 4e TP s'orchestre autour du [jeu 2048](https://fr.wikipedia.org/wiki/2048_(jeu_vid%C3%A9o)), devenu très populaire lors de sa sortie en 2014. Si vous avez besoin d'un petit rafraîchissement mémoire ou si vous ne connaissez pas dutout le jeu, suivez le lien wikipédia.
 
 L'objectif est donc de "combiner" successivement des tuiles occupées par les mêmes puissances de 2 afin d'obtenir le nombre **2048** et gagner la partie. À chaque tour de jeu, on déplace l'ensemble des tuiles dans une des 4 directions de base (haut, bas, gauche, droite) et une nouvelle tuile **2** apparaît à un emplacement non-occupé aléatoire.  
 
