@@ -30,7 +30,7 @@ Le fichier *logique.py* ne contient pas de *main*, mais seulement les fonctions 
 Référez-vous aux constantes définies dans le fichier *constantes.py* afin de limiter l'utilisation de *chiffres magiques*. Vous pouvez définir de nouvelles constantes si cela vous est utile.
 L'ordre de définition des fonctions suit un ordre de lecture logique, mais vous pouvez remplir le code dans l'ordre que vous désirez.
 Il y a 3 groupes de fonctions:
-1. Les fonctions responsables de l'état du jeu (initialier la partie, état actuel de la partie) 
+### 1. Les fonctions responsables de l'état du jeu (initialier la partie, état actuel de la partie) 
 ```python
 # Initialisation du jeu.
 def demarrer_jeu():     ...
@@ -50,7 +50,7 @@ return ...
 def get_etat_jeu_courant(grille):     ...
 return ...
 ```
-2. Les fonctions d'opérations sur les matrices (compression, inversion, fusion, etc.)
+### 2. Les fonctions d'opérations sur les matrices (compression, inversion, fusion, etc.)
 
 Dans le but de limiter la taille du code à écrire, nous allons effectuer un petit tour de passe-passe. Même s'il existe 4 directions de mouvement pour le joueur (haut, bas, gauche, droite), la procédure sera de transformer les matrices (avec les opérations transposition et inverse) et d'obtenir la *matrice équivalente* qui nécessiterait une translation **à gauche** afin de réaliser l'opération (droite, haut, bas) réellement voulue.
 Ainsi, les opérations comprimer(matrice) et fusionner(matrice) n'ont a être définies que pour une compression & fusion vers la gauche.
@@ -71,7 +71,7 @@ return ...
 # Prduit la matrice transposée d'une matrice def transposer(matrice):     ...
 return ...
 ```
-3. Les 4 fonctions définissant les actions du joueur (déplacement haut,bas,gauche,droite)<
+### 3. Les 4 fonctions définissant les actions du joueur (déplacement haut,bas,gauche,droite)<
 
 Comme expliqué au point 2, le mouvement de base est la translation à gauche. Les 3 autres mouvements sont définis en fonction celui-ci.
 ```python
