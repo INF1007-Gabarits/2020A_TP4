@@ -29,7 +29,7 @@ Vous aurez donc à compléter la logique du jeu (*2048/logique.py)* et implémen
 Le fichier *logique.py* ne contient pas de *main*, mais seulement les fonctions qui seront appelées par le code de l'interface graphique (*gui.py*).
 Référez-vous aux constantes définies dans le fichier *constantes.py* afin de limiter l'utilisation de *chiffres magiques*. Vous pouvez définir de nouvelles constantes si cela vous est utile.
 
-L'ordre de définition des fonctions suit un ordre de lecture logique, mais vous pouvez remplir le code dans l'ordre que vous désirez.
+L'ordre de définition des fonctions suit un ordre de lecture logique, mais vous pouvez remplir le code dans l'ordre que vous désirez.  
 Il y a 3 groupes de fonctions:
 ### 1. Les fonctions responsables de l'état du jeu (initialier la partie, état actuel de la partie) 
 ```python
