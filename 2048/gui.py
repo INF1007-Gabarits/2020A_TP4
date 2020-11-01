@@ -1,11 +1,12 @@
-import random
 from tkinter import Frame, Label, CENTER
 
-import logique_corrige as logique
 import constantes as c
+import logique as logique
 
 
 class GrilleDeJeu(Frame):
+    """Classe représentant l'état du jeu"""
+
     def __init__(self):
         Frame.__init__(self)
 
@@ -13,16 +14,21 @@ class GrilleDeJeu(Frame):
         self.master.title(c.TITRE)
         self.master.bind("<Key>", self.touche_appuyee)
 
-        self.commands = {c.TOUCHE_HAUT: logique.faire_translation_haut, c.TOUCHE_BAS: logique.faire_translation_bas,
-                         c.TOUCHE_GAUCHE: logique.faire_translation_gauche, c.TOUCHE_DROIT: logique.faire_translation_droite}
-        
+        self.commands = {
+            c.TOUCHE_HAUT: logique.faire_translation_haut,
+            c.TOUCHE_BAS: logique.faire_translation_bas,
+            c.TOUCHE_GAUCHE: logique.faire_translation_gauche,
+            c.TOUCHE_DROIT: logique.faire_translation_droite
+        }
+
         self.initialiser_grille()
-        self.initialiser_matrice()
+        self.matrice = logique.demarrer_jeu()
         self.mettre_a_jour_cellules_grille()
 
         self.mainloop()
 
     def initialiser_grille(self):
+        '''Initialise l'affichage de la grille à l'état de départ du jeu'''
         background = Frame(self, bg=c.COULEUR_BACKGROUND_JEU,
                            width=c.TAILLE_GRILLE_EN_PX, height=c.TAILLE_GRILLE_EN_PX)
         background.grid()
@@ -36,18 +42,20 @@ class GrilleDeJeu(Frame):
                              height=c.TAILLE_GRILLE_EN_PX / c.TAILLE_GRILLE)
                 cell.grid(row=i, column=j, padx=c.PADDING_GRILLE_EN_PX,
                           pady=c.PADDING_GRILLE_EN_PX)
-                t = Label(master=cell, text="",
-                          bg=c.COULEUR_BACKGROUND_TUILE_VIDE,
-                          justify=CENTER, font=c.POLICE_DE_CARACTERE, width=5, height=2)
-                t.grid()
-                rangee_grille.append(t)
+                tuile = Label(master=cell, text="",
+                              bg=c.COULEUR_BACKGROUND_TUILE_VIDE,
+                              justify=CENTER, font=c.POLICE_DE_CARACTERE, width=5, height=2)
+                tuile.grid()
+                rangee_grille.append(tuile)
 
             self.cellules_grille.append(rangee_grille)
 
     def initialiser_matrice(self):
+        '''Initialiser la matrice représentant la grille de jeu'''
         self.matrice = logique.demarrer_jeu()
 
     def mettre_a_jour_cellules_grille(self):
+        '''Met à jour l'affichage de la grille en fonction de la matrice du jeu'''
         for i in range(c.TAILLE_GRILLE):
             for j in range(c.TAILLE_GRILLE):
                 nouveau_nombre = self.matrice[i][j]
@@ -61,6 +69,12 @@ class GrilleDeJeu(Frame):
         self.update_idletasks()
 
     def touche_appuyee(self, event):
+        '''
+        Logique d'exécution lors de l'appui d'une touche (w,a,s,d)
+
+                Paramètres:
+                        event (Event): Contient la chaîne de caractères d'un évènement (touche clavier)
+        '''
         touche = repr(event.char)
         if touche in self.commands:
             self.matrice, fini = self.commands[repr(event.char)](self.matrice)
@@ -70,7 +84,7 @@ class GrilleDeJeu(Frame):
                 fini = False
 
                 status = logique.get_etat_jeu_courant(self.matrice)
-                if status == c.ETAT_VICTOIRE: 
+                if status == c.ETAT_VICTOIRE:
                     self.cellules_grille[1][1].configure(
                         text="Tu as", bg=c.COULEUR_BACKGROUND_TUILE_VIDE)
                     self.cellules_grille[1][2].configure(
@@ -80,5 +94,6 @@ class GrilleDeJeu(Frame):
                         text="Tu as", bg=c.COULEUR_BACKGROUND_TUILE_VIDE)
                     self.cellules_grille[1][2].configure(
                         text="Perdu!", bg=c.COULEUR_BACKGROUND_TUILE_VIDE)
+
 
 grille_de_jeu = GrilleDeJeu()

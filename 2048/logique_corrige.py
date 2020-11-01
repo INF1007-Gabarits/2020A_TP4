@@ -108,8 +108,8 @@ def comprimer(matrice):
                     a_au_moins_un_changement = True
                 
                 derniere_position += 1
-  
-    return nouvelle_matrice, a_au_moins_un_changement 
+
+    return nouvelle_matrice, a_au_moins_un_changement
   
 # TODO:
 # Fusionner les éléments de la matrice après une compression

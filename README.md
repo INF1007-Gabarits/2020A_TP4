@@ -39,7 +39,7 @@ Il y a 3 groupes de fonctions:
 #### 1. Les fonctions responsables de l'état du jeu (initialier la partie, état actuel de la partie)
 ```python
 # Initialisation du jeu.
-def demarrer_jeu(): 
+def demarrer_jeu():
     ...
     return ...
 ```
@@ -105,11 +105,16 @@ Comme vu en classe, il est très important de tester extensivement le code écri
 
 Dans le cas spécifique d'un jeu, qui dépend d'une intéraction constante entre le joueur et la logique de jeu (à travers les commandes), les tests sont encore plus importants. Il vous sera donc demandé de tester l'ensemble des fonctions définies dans *logique.py*
 
-Le fichier *tests.py* contient un exemple de code rédigé pour tester une fonction (à noter que le test en tant que tel n'est pas implémenté). 
+Le fichier *tests.py* contient un exemple de code rédigé pour tester UN cas d'utilisation d'UNE fonction (à noter que le test en tant que tel n'est pas implémenté). 
 ```python
 # Tests
-def tester_inverser():
-    return True
+def tester_inverser_matrice_identite():
+    matrice = [[1, 0, 0, 0],
+               [0, 1, 0, 0],
+               [0, 0, 1, 0],
+               [0, 0, 0, 1]]
+    ...
+    return ...
 
 # Affichage des tests
 def ecrire_resultat_test(test, resultat):
