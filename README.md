@@ -18,7 +18,7 @@ L'objectif est donc de "combiner" successivement des tuiles occupées par les m�
 > Grille du jeu en cours de partie
 Attention! C'est un jeu dangereusement satisfaisant et addictif.  
 ![grille_2048_victoire](https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/2048_finished_game.png/270px-2048_finished_game.png)
-> Victoire, la tuile 2048 est obtenue après de tonitruants efforts!
+> Victoire, la tuile 2048 est obtenue après de tonitruants efforts!  
 Vous aurez donc à compléter la logique du jeu (*2048/logique.py)* et implémenter une série de tests (*2048/tests.py* afin de vérifier que les nombreux états limites de votre implémentation sont fonctionnels. Nous avons complété l'interface graphique du jeu (*2048/gui.py*) et vous n'avez pas a y toucher. L'acronyme anglais *GUI* signifie *graphical user interface*.
 ## Partie 1: Logique du jeu
 Le fichier *logique.py* ne contient pas de *main*, mais seulement les fonctions qui seront appelées par le code de l'interface graphique (*gui.py*).
