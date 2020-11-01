@@ -31,9 +31,9 @@ def ajouter_nouveau_2_ou_4(grille):
 # TODO:
 #  Retourner l'état du jeu
 #  1. Victoire
-#    a) Si un element de la matrice == 2048
+#    a) Si un élément de la matrice == 2048
 #  2. Le jeu n'est pas fini
-#    a) S'il y a au moins un element == 0
+#    a) S'il y a au moins un élément == 0
 #    b) OU S'il n'y a aucune cellule vide, MAIS qu'il y a un (ou des) mouvements possibles
 #  3. Défaite
 #    a) Les cas restants
@@ -48,10 +48,10 @@ def get_etat_jeu_courant(grille):
 #  Comprimer la matrice de jeu.
 #  À effectuer après toutes les étapes avant et après le fusionnement des éléments
 #    a) Initialiser une nouvelle matrice remplie de 0 initialement.
-#    b) Bouger tous les elements à son extrême gauche, lorsque possible
+#    b) Bouger tous les éléments à son extrême gauche, lorsque possible
 #        b.a) SEULEMENT possible lorsque l'élément à gauche == 0
 #        b.b) PAS POSSIBLE si gauche != 0
-#    c) Retourner la nouvelle matrice comprimée, avec un booléen indicant s'il y a au moins eu
+#    c) Retourner la nouvelle matrice comprimée, avec un booléen indiquant s'il y a au moins eu
 #       1 changement
 def comprimer(matrice):
     ...
@@ -61,9 +61,9 @@ def comprimer(matrice):
 # TODO:
 #  Fusionner les éléments de la matrice après une compression
 #  1) Si l'élément a la même valeur que le prochain élément dans la ligne
-#     ET qu'ils sont non vide (!= 0)
+#     ET qu'ils sont non vides (!= 0)
 #     ALORS doubler la valeur de l'élément courant ET vider l'élément suivant
-#  2) Retourner la matrice fusionnée et un booléen indicant s'il y a eu un changement
+#  2) Retourner la matrice fusionnée et un booléen indiquant s'il y a eu un changement
 def fusionner(matrice):
     ...
     return ...
@@ -82,7 +82,7 @@ def inverser(matrice):
 # TODO:
 #  Transposer la matrice
 #  1) Dans une nouvelle matrice,
-#     Échanger les lignes avec les colomnes
+#     Échanger les lignes avec les colonnes
 #  2) Retourner la nouvelle matrice
 def transposer(matrice):
     ...
@@ -97,7 +97,7 @@ def transposer(matrice):
 #    a) Comprimer la matrice
 #    b) Fusionner la matrice
 #    c) Recomprimer la matrice
-#  2) Retourner la nouvelle matrice, ainsi qu'un booléen indicant s'il y a eu un changement
+#  2) Retourner la nouvelle matrice, ainsi qu'un booléen indiquant s'il y a eu un changement
 def faire_translation_gauche(matrice):
     ...
     return ...
@@ -109,7 +109,7 @@ def faire_translation_gauche(matrice):
 #    a) Inverser la matrice pour simuler un mouvement à gauche
 #    b) Bouger la matrice à gauche
 #    c) Re-inverser la matrice
-#  2) Retourner la nouvelle matrice, ainsi qu'un booléen indicant s'il y a eu un changement
+#  2) Retourner la nouvelle matrice, ainsi qu'un booléen indiquant s'il y a eu un changement
 def faire_translation_droite(matrice):
     ...
     return ...
@@ -121,7 +121,7 @@ def faire_translation_droite(matrice):
 #    a) Transposer la matrice pour simuler un mouvement à gauche
 #    b) Bouger la matrice à gauche
 #    c) Re-transposer la matrice
-#  2) Retourner la nouvelle matrice, ainsi qu'un booléen indicant s'il y a eu un changement
+#  2) Retourner la nouvelle matrice, ainsi qu'un booléen indiquant s'il y a eu un changement
 def faire_translation_haut(matrice):
     ...
     return ...
@@ -133,7 +133,7 @@ def faire_translation_haut(matrice):
 #    a) Transposer la matrice pour simuler un mouvement à droite
 #    b) Bouger la matrice à droite
 #    c) Re-transposer la matrice
-#  2) Retourner la nouvelle matrice, ainsi qu'un booléen indicant s'il y a eu un changement
+#  2) Retourner la nouvelle matrice, ainsi qu'un booléen indiquant s'il y a eu un changement
 def faire_translation_bas(matrice):
     ...
     return ...
