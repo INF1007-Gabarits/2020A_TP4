@@ -28,6 +28,7 @@ Vous aurez donc à compléter la logique du jeu (*2048/logique.py)* et implémen
 ## Partie 1: Logique du jeu
 Le fichier *logique.py* ne contient pas de *main*, mais seulement les fonctions qui seront appelées par le code de l'interface graphique (*gui.py*).
 Référez-vous aux constantes définies dans le fichier *constantes.py* afin de limiter l'utilisation de *chiffres magiques*. Vous pouvez définir de nouvelles constantes si cela vous est utile.
+
 L'ordre de définition des fonctions suit un ordre de lecture logique, mais vous pouvez remplir le code dans l'ordre que vous désirez.
 Il y a 3 groupes de fonctions:
 ### 1. Les fonctions responsables de l'état du jeu (initialier la partie, état actuel de la partie) 
@@ -53,6 +54,7 @@ return ...
 ### 2. Les fonctions d'opérations sur les matrices (compression, inversion, fusion, etc.)
 
 Dans le but de limiter la taille du code à écrire, nous allons effectuer un petit tour de passe-passe. Même s'il existe 4 directions de mouvement pour le joueur (haut, bas, gauche, droite), la procédure sera de transformer les matrices (avec les opérations transposition et inverse) et d'obtenir la *matrice équivalente* qui nécessiterait une translation **à gauche** afin de réaliser l'opération (droite, haut, bas) réellement voulue.
+
 Ainsi, les opérations comprimer(matrice) et fusionner(matrice) n'ont a être définies que pour une compression & fusion vers la gauche.
 ```python
 # Comprime la matrice de jeu.
@@ -80,7 +82,9 @@ return ...
 ```
 ## Partie 2: Rédactions des tests
 Comme vu en classe, il est très important de tester extensivement le code écrit. C'est malheureusement une pratique souvent ignorée par manque de temps ou d'intérêt. Mais comme pour toute autre bonne pratique ee génie informatique/logiciel, les conséquences négatives d'une telle décision finissent par nous rattraper tous.
+
 Dans le cas spécifique d'un jeu, qui dépend d'une interaction constante entre le joueur et la logique de jeu (à travers les commandes), les tests sont encore plus importants. Il vous sera donc demandé de tester l'ensemble des fonctions définies dans *logique.py*
+
 Le fichier *tests.py* contient un exemple de code rédigé pour tester UN cas d'utilisation d'UNE fonction (à noter que le test en tant que tel n'est pas implémenté). 
 ```python
 # Tests def tester_inverser_matrice_identite():     matrice = [[1, 0, 0, 0],                [0, 1, 0, 0],
