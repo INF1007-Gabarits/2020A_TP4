@@ -87,6 +87,7 @@ def faire_translation_gauche(matrice):
 def faire_translation_droite(matrice):
     ...
     return ...
+```
 ```python
 #  Bouge la matrice en haut
 def faire_translation_haut(matrice):
