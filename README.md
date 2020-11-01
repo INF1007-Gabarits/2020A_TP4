@@ -1,6 +1,6 @@
 # TP6
 ### Test & outils de corrections
-alarm_clock: Remise le [15 novembre 23h59](https://www.timeanddate.com/countdown/generic?iso=20201115T235959&p0=165&msg=Remise+TP4&font=cursive)
+:alarm_clock: Remise le [15 novembre 23h59](https://www.timeanddate.com/countdown/generic?iso=20201115T235959&p0=165&msg=Remise+TP4&font=cursive)
 ## Objectifs
 ## Consignes à respecter
 - Indications de type (*Type hints*)
