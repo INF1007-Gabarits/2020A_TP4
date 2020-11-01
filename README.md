@@ -18,6 +18,7 @@ L'objectif est donc de "combiner" successivement des tuiles occupées par les m�
 > Grille du jeu en cours de partie  
 
 Attention! C'est un jeu dangereusement satisfaisant et addictif.  
+
 ![grille_2048_victoire](https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/2048_finished_game.png/270px-2048_finished_game.png)
 
 > Victoire, la tuile 2048 est obtenue après de tonitruants efforts!  
