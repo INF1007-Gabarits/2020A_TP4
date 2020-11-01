@@ -7,8 +7,8 @@ alarm_clock: Remise le [15 novembre 23h59](https://www.timeanddate.com/countdown
 - Indications de type (*Type hints*)
 - Respecter [guide de codage](https://github.com/INF1007-Gabarits/Guide-codage-python) et normes pep8
 - Attention aux:
-- En-têtes de fichier et fonction (voir règles 33 et 89 du guide, d'autres exemples [ici](https://www.datacamp.com/community/tutorials/docstrings-python))
-- Chiffres magiques
+  - En-têtes de fichier et fonction (voir règles 33 et 89 du guide, d'autres exemples [ici](https://www.datacamp.com/community/tutorials/docstrings-python))
+  - Chiffres magiques
 - noms de variables et fonctions adéquats (concis, compréhensibles)
 - Aucun ajout de librairie supplémentaire qui altérerait l'esprit du TP. Cet exercice travaille beaucoup avec les matrices. S'il est vrai que du code très efficace pour gérer les opérations matricielles a déjà été écrit par d'autres (librairie *numpy* par exemple), l'intérêt ici est que vous développiez une compréhension du code, pas simplement d'appeler des fonctions haut niveau qui font tout le travail pour vous.. Par exemple la fonction transposer() doit être implémentée directement, l'utilisation du numpy.T est triviale et ne demandes par vraiment de compréhension de votre part.
 ## Mise en contexte
