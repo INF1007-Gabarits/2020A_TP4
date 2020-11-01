@@ -1,3 +1,4 @@
+# Définissez et implémentez ici la liste des fonctions de tests responsables des tests de chacune des fonctions de logique.py
 def tester_inverser():
     return True
 

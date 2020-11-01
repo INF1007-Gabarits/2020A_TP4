@@ -1,7 +1,7 @@
 import random
 from tkinter import Frame, Label, CENTER
 
-import logique
+import logique_corrige as logique
 import constantes as c
 
 
@@ -13,8 +13,8 @@ class GrilleDeJeu(Frame):
         self.master.title(c.TITRE)
         self.master.bind("<Key>", self.touche_appuyee)
 
-        self.commands = {c.TOUCHE_HAUT: logique.bouger_matrice_en_haut, c.TOUCHE_BAS: logique.bouger_la_matrice_en_bas,
-                         c.TOUCHE_GAUCHE: logique.bouger_matrice_a_gauche, c.TOUCHE_DROIT: logique.bouger_matrice_a_droite}
+        self.commands = {c.TOUCHE_HAUT: logique.faire_translation_haut, c.TOUCHE_BAS: logique.faire_translation_bas,
+                         c.TOUCHE_GAUCHE: logique.faire_translation_gauche, c.TOUCHE_DROIT: logique.faire_translation_droite}
         
         self.initialiser_grille()
         self.initialiser_matrice()
@@ -28,12 +28,12 @@ class GrilleDeJeu(Frame):
         background.grid()
 
         self.cellules_grille = []
-        for i in range(c.NB_CHIFFRE_DANS_GRILLE):
+        for i in range(c.TAILLE_GRILLE):
             rangee_grille = []
-            for j in range(c.NB_CHIFFRE_DANS_GRILLE):
+            for j in range(c.TAILLE_GRILLE):
                 cell = Frame(background, bg=c.COULEUR_BACKGROUND_TUILE_VIDE,
-                             width=c.TAILLE_GRILLE_EN_PX / c.NB_CHIFFRE_DANS_GRILLE,
-                             height=c.TAILLE_GRILLE_EN_PX / c.NB_CHIFFRE_DANS_GRILLE)
+                             width=c.TAILLE_GRILLE_EN_PX / c.TAILLE_GRILLE,
+                             height=c.TAILLE_GRILLE_EN_PX / c.TAILLE_GRILLE)
                 cell.grid(row=i, column=j, padx=c.PADDING_GRILLE_EN_PX,
                           pady=c.PADDING_GRILLE_EN_PX)
                 t = Label(master=cell, text="",
@@ -48,8 +48,8 @@ class GrilleDeJeu(Frame):
         self.matrice = logique.demarrer_jeu()
 
     def mettre_a_jour_cellules_grille(self):
-        for i in range(c.NB_CHIFFRE_DANS_GRILLE):
-            for j in range(c.NB_CHIFFRE_DANS_GRILLE):
+        for i in range(c.TAILLE_GRILLE):
+            for j in range(c.TAILLE_GRILLE):
                 nouveau_nombre = self.matrice[i][j]
                 if nouveau_nombre == 0:
                     self.cellules_grille[i][j].configure(
