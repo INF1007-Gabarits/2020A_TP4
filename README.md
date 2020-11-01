@@ -30,7 +30,8 @@ Le fichier *logique.py* ne contient pas de *main*, mais seulement les fonctions 
 Référez-vous aux constantes définies dans le fichier *constantes.py* afin de limiter l'utilisation de *chiffres magiques*. Vous pouvez définir de nouvelles constantes si cela vous est utile.
 
 L'ordre de définition des fonctions suit un ordre de lecture logique, mais vous pouvez remplir le code dans l'ordre que vous désirez.  
-Il y a 3 groupes de fonctions:
+
+Il y a 3 groupes de fonctions à implémenter:
 ### 1. Les fonctions responsables de l'état du jeu (initialier la partie, état actuel de la partie) 
 ```python
 # Initialisation du jeu.
