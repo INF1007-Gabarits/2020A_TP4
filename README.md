@@ -3,8 +3,9 @@
 :warning: **Attention ce TP ne du qu'une semaine, la remise est le dimanche suivant votre séance de lab** :warning:  
 :alarm_clock: Remise le [8 novembre 23h59](https://www.timeanddate.com/countdown/generic?iso=2020118T235959&p0=165&msg=Remise+TP4&font=cursive)
 ## Objectifs
+Ce 4e travail pratique vise à vous familiariser avec de nouvelles pratiques de bonne gestion du code. L'écriture de tests et la documentation sont très importants lorsqu'on souhaite mener un projet à terme et permettre une maintenance efficace et peu coûteuse.
 ## Consignes à respecter
-- Respecter [guide de codage](https://github.com/INF1007-Gabarits/Guide-codage-python) et normes pep8
+- Respecter [guide de codage](https://github.com/INF1007-Gabarits/Guide-codage-python) et les normes pep8
 - Attention aux:
   - En-têtes de fichier et fonction (voir règles 33 et 89 du guide, d'autres exemples [ici](https://www.datacamp.com/community/tutorials/docstrings-python))
   - Chiffres magiques
