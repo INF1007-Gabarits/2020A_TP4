@@ -7,7 +7,7 @@ import constantes as c
 
 # TODO:
 #  Initialisation du jeu
-#  1. Dans une nouvelle matrice, ajouter deux fois un 2 ou un 4
+#  1. Dans une nouvelle matrice, ajouter deux fois (un 2 ou un 4)
 def demarrer_jeu():
     ...
     return ...
@@ -23,6 +23,7 @@ def initialiser_nouvelle_matrice():
 # TODO:
 #  Ajout d'un 2 ou d'un 4 a la matrice du jeu avec des probabilités de: 90% 2 et 10% 4
 #  dans un emplacement vide aléatoire de la matrice (emplacement == 0)
+#  Modifie le paramètre grille et retourne la grille modifiée.
 def ajouter_nouveau_2_ou_4(grille):
     ...
     return ...
@@ -30,6 +31,8 @@ def ajouter_nouveau_2_ou_4(grille):
 
 # TODO:
 #  Retourner l'état du jeu
+#  Les valeurs retournées sont les états définis dans constantes.py (ETAT_x)
+#  ex: return c.ETAT_VICTOIRE
 #  1. Victoire
 #    a) Si un élément de la matrice == 2048
 #  2. Le jeu n'est pas fini
