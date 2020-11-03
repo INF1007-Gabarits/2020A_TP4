@@ -26,6 +26,8 @@ Attention! C'est un jeu dangereusement satisfaisant et addictif.
 
 Vous aurez donc à compléter la logique du jeu (*2048/logique.py)* et implémenter une série de tests (*2048/tests.py* afin de vérifier que les nombreux états limites de votre implémentation sont fonctionnels. Nous avons complété l'interface graphique du jeu (*2048/gui.py*) et vous n'avez pas à y toucher. L'acronyme anglais *GUI* signifie *graphical user interface*. Le jeu se joue à l'aide des touches *W A S D*.
 
+Pour tester votre jeu vous pouvez exécuter le contenu du fichier "gui.py" dans PyCharm ou dans le terminal `python gui.py`
+
 ## Partie 1: Logique du jeu
 Le fichier *logique.py* ne contient pas de *main*, mais seulement les fonctions qui seront appelées par le code de l'interface graphique (*gui.py*).
 Référez-vous aux constantes définies dans le fichier *constantes.py* afin de limiter l'utilisation de *chiffres magiques*. Vous pouvez définir de nouvelles constantes si cela vous est utile.
