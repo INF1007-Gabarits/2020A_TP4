@@ -146,7 +146,7 @@ if __name__ == '__main__':
 ### À faire
 
 Votre code doit tester les cas (valeurs d'entrées et d'exécutions) **limites** des fonctions afin de repérer d'éventuelles erreurs de logique. Une fonction par cas de test vous est demandé. Normalement, pour avoir une couverture exhaustive du code, il faut s'assurer de passer par tous les chemins de code ainsi que par toutes les valeurs limites. Toutefois, pour ce TP, 2 cas de tests par fonction sera suffisant. Veuillez vous assurer d'avoir un nom clair qui identifie bien la fonction testée ainsi que le cas de test.  
-**Pour ce qui est des fonctions sans paramètres, un seul test est nécessaire**
+**Puisque la fonction initialiser_nouvelle_matrice() ne prend pas de paramètres et qu'elle retourne toujours la même chose, un seul test est nécessaire.**
 
 Exemple: Tests pour la fonction inverser
 * tester_inverser_matrice_identite()
