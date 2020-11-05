@@ -129,9 +129,11 @@ def tester_inverser_matrice_identite():
                [0, 1, 0, 0],
                [0, 0, 1, 0],
                [0, 0, 0, 1]]
-    ...
-    return ...
-return ...
+    matrice_attendue = [[0, 0, 0, 1],
+                        [0, 0, 1, 0],
+                        [0, 1, 0, 0],
+                        [1, 0, 0, 0]]
+    return logique.inverser(matrice) == matrice_attendue
 
 # Affichage des tests
 def ecrire_resultat_test(test, resultat):
