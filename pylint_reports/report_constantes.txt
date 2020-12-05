@@ -1,0 +1,2 @@
+************* Module constantes.py
+constantes.py:1:0: F0001: No module named constantes.py (fatal)

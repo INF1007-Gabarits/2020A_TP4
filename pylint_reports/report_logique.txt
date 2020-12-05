@@ -1,0 +1,2 @@
+************* Module logique.py
+logique.py:1:0: F0001: No module named logique.py (fatal)
