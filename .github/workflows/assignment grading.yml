@@ -9,6 +9,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Create protected branches
+        run: |
+          source settings/variables.txt
+          python3 -m pip install -q setuptools
+          python3 -m pip install -q git+${{ secrets.CLASSROOM_TOOLS_URL }}
+          python3 -m classroom_tools.student_repositories.create_protected_branch_from_master \
+            --token=${{ secrets.REPO_PAT }} \
+            --org_name="$org_name" \
+            --repo_filter="$repo_filter" \
+            --branch="remise"
+             
+      - uses: actions/checkout@v2
       - name: Remove student write permissions
         run: |
           source settings/variables.txt
